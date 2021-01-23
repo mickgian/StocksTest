@@ -9,4 +9,5 @@ private const val DATABASE = "DATABASE"
 val localModule = module {
     single(DATABASE) { ArchAppDatabase.buildDatabase(androidContext()) }
     factory { (get(DATABASE) as ArchAppDatabase).userDao() }
+    factory { (get(DATABASE) as ArchAppDatabase).stockDao() }
 }

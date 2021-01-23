@@ -1,6 +1,7 @@
 package io.philippeboisney.remote
 
 import io.philippeboisney.model.ApiResult
+import io.philippeboisney.model.Stocks
 import io.philippeboisney.model.User
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
@@ -19,9 +20,8 @@ interface UserService {
 
 interface StocksService {
 
-    @GET("search/users")
-    fun fetchStocksAsync(@Query("q") query: String = "PhilippeB",
-                         @Query("sort") sort: String = "followers"): Deferred<ApiResult<User>>
+    @GET("market/v2/get-summary")
+    fun fetchStocksAsync(): Deferred<ApiResult<Stocks.Result>>
 
     @GET("users/{login}")
     fun fetchStocksDetailsAsync(@Path("login") login: String): Deferred<User>

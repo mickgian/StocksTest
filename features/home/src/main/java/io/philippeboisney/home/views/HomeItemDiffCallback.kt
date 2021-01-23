@@ -1,10 +1,11 @@
 package io.philippeboisney.home.views
 
 import androidx.recyclerview.widget.DiffUtil
+import io.philippeboisney.model.Stocks
 import io.philippeboisney.model.User
 
-class HomeItemDiffCallback(private val oldList: List<User>,
-                           private val newList: List<User>) : DiffUtil.Callback() {
+class HomeItemDiffCallback(private val oldList: List<Stocks.Result>,
+                           private val newList: List<Stocks.Result>) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size
 
@@ -14,8 +15,6 @@ class HomeItemDiffCallback(private val oldList: List<User>,
             = oldList[oldItemPosition] == newList[newItemPosition]
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].id == newList[newItemPosition].id
-                && oldList[oldItemPosition].avatarUrl == newList[newItemPosition].avatarUrl
-                && oldList[oldItemPosition].login == newList[newItemPosition].login
+        return oldList[oldItemPosition].fullExchangeName == newList[newItemPosition].fullExchangeName
     }
 }

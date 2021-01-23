@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import io.philippeboisney.model.Stocks
 import io.philippeboisney.model.User
 import io.philippeboisney.repository.utils.Resource
 
@@ -21,7 +22,7 @@ object HomeBinding {
     }
 
     @BindingAdapter("app:items")
-    @JvmStatic fun setItems(recyclerView: RecyclerView, resource: Resource<List<User>>?) {
+    @JvmStatic fun setItems(recyclerView: RecyclerView, resource: Resource<List<Stocks.Result>>?) {
         with(recyclerView.adapter as HomeAdapter) {
             resource?.data?.let { updateData(it) }
         }
@@ -33,7 +34,7 @@ object HomeBinding {
     }
 
     @BindingAdapter("app:showWhenEmptyList")
-    @JvmStatic fun showMessageErrorWhenEmptyList(view: View, resource: Resource<List<User>>?) {
+    @JvmStatic fun showMessageErrorWhenEmptyList(view: View, resource: Resource<List<Stocks.Result>>?) {
         if (resource!=null) {
             view.visibility = if (resource.status == Resource.Status.ERROR
                 && resource.data != null

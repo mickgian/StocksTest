@@ -19,7 +19,7 @@
                 android:id="@+id/fragment_home_swipe_to_refresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:showWhenLoading="@{viewmodel.users}"
+                app:showWhenLoading="@{viewmodel.stocks}"
                 app:onRefreshListener="@{() -> viewmodel.userRefreshesItems()}">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +29,7 @@
                 <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:showWhenEmptyList="@{viewmodel.users}"
+                        app:showWhenEmptyList="@{viewmodel.stocks}"
                         android:text="@string/an_error_happened"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="8dp"
@@ -47,7 +47,7 @@
                 <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:showWhenEmptyList="@{viewmodel.users}"
+                        app:showWhenEmptyList="@{viewmodel.stocks}"
                         app:srcCompat="@drawable/ic_error_black_24dp"
                         android:id="@+id/fragment_home_image_empty_list"
                         android:layout_marginTop="8dp"
@@ -66,7 +66,7 @@
                         android:id="@+id/fragment_home_rv"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        app:items="@{viewmodel.users}"
+                        app:items="@{viewmodel.stocks}"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

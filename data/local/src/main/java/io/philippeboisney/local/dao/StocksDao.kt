@@ -6,9 +6,9 @@ import io.philippeboisney.model.Stocks
 import java.util.*
 
 @Dao
-internal abstract class StockDao : StocksBaseDao<Stocks.Result>() {
+abstract class StocksDao : StocksBaseDao<Stocks.Result>() {
 
-    @Query("SELECT * FROM Stocks")
+    @Query("SELECT * FROM Result")
     abstract suspend fun getStocks(): List<Stocks.Result>
 
     suspend fun save(stock: List<Stocks.Result>) {

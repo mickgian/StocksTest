@@ -2,7 +2,9 @@ package io.philippeboisney.home.domain
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
+import io.philippeboisney.model.Stocks
 import io.philippeboisney.model.User
+import io.philippeboisney.repository.StocksRepository
 import io.philippeboisney.repository.utils.Resource
 import io.philippeboisney.repository.UserRepository
 
@@ -12,10 +14,19 @@ import io.philippeboisney.repository.UserRepository
  *
  * In this Use Case, I'm just doing nothing... ¯\_(ツ)_/¯
  */
-class GetTopUsersUseCase(private val repository: UserRepository) {
+//class GetTopUsersUseCase(private val repository: UserRepository) {
+//
+//    suspend operator fun invoke(forceRefresh: Boolean = false): LiveData<Resource<List<User>>> {
+//        return Transformations.map(repository.getTopUsersWithCache(forceRefresh)) {
+//            it // Place here your specific logic actions
+//        }
+//    }
+//}
 
-    suspend operator fun invoke(forceRefresh: Boolean = false): LiveData<Resource<List<User>>> {
-        return Transformations.map(repository.getTopUsersWithCache(forceRefresh)) {
+class GetTopUsersUseCase(private val repository: StocksRepository) {
+
+    suspend operator fun invoke(forceRefresh: Boolean = false): LiveData<Resource<List<Stocks.Result>>> {
+        return Transformations.map(repository.getStocksWithCache(forceRefresh)) {
             it // Place here your specific logic actions
         }
     }

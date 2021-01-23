@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-@Entity
 data class Stocks(
     val error: Any,
     val result: List<Result>
 ) {
+    @Entity
     data class Result(
         @PrimaryKey
         @SerializedName("fullExchangeName")
