@@ -11,25 +11,26 @@ import io.philippeboisney.model.User
 
 class HomeAdapter(private val viewModel: HomeViewModel): RecyclerView.Adapter<HomeViewHolder>() {
 
-    private val users: MutableList<Stocks.Result> = mutableListOf()
+//    private val users: MutableList<Stocks.Result> = mutableListOf()
+    private val stocks: MutableList<Stocks.Result> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             = HomeViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_home, parent, false))
 
     override fun getItemCount(): Int
-            = users.size
+            = stocks.size
 
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int)
-            = holder.bindTo(users[position], viewModel)
+            = holder.bindTo(stocks[position], viewModel)
 
     // ---
 
     fun updateData(items: List<Stocks.Result>) {
-        val diffCallback = HomeItemDiffCallback(users, items)
+        val diffCallback = HomeItemDiffCallback(stocks, items)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
 
-        users.clear()
-        users.addAll(items)
+        stocks.clear()
+        stocks.addAll(items)
         diffResult.dispatchUpdatesTo(this)
     }
 }

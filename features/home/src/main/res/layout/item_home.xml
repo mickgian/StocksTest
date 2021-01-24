@@ -6,7 +6,7 @@
 
     <data>
         <variable
-                name="user"
+                name="stock"
                 type="io.philippeboisney.model.Stocks.Result" />
         <variable
                 name="viewmodel"
@@ -19,33 +19,36 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="@{() -> viewmodel.userClicksOnItem(user)}"
+            android:onClick="@{() -> viewmodel.userClicksOnItem(stock)}"
             tools:context=".HomeFragment">
-        <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                tools:srcCompat="@tools:sample/avatars"
-                app:imageUrl="@{user.fullExchangeName}"
-                android:id="@+id/imageView"
-                android:layout_marginTop="16dp"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="16dp"/>
+
         <TextView
-                android:text="@{user.fullExchangeName}"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView"
-                android:layout_marginTop="8dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
-                android:layout_marginStart="32dp"/>
+            android:id="@+id/textViewMarket"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="centerCrop"
+            android:text="@{stock.market}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@{stock.fullExchangeName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewMarket"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

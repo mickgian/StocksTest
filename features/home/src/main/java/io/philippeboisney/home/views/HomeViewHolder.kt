@@ -5,14 +5,13 @@ import androidx.recyclerview.widget.RecyclerView
 import io.philippeboisney.home.HomeViewModel
 import io.philippeboisney.home.databinding.ItemHomeBinding
 import io.philippeboisney.model.Stocks
-import io.philippeboisney.model.User
 
 class HomeViewHolder(parent: View): RecyclerView.ViewHolder(parent) {
 
     private val binding = ItemHomeBinding.bind(parent)
 
-    fun bindTo(user: Stocks.Result, viewModel: HomeViewModel) {
-        binding.user = user
+    fun bindTo(stock: Stocks.Result, viewModel: HomeViewModel) {
+        binding.stock = stock
         binding.viewmodel = viewModel
     }
 }

@@ -17,8 +17,10 @@ class StocksRepositoryImpl(private val dataSource: StockDataSource, private val 
     override suspend fun getStocksWithCache(forceRefresh: Boolean): LiveData<Resource<List<Stocks.Result>>> {
         return object : NetworkBoundResource<List<Stocks.Result>, ApiResult<Stocks.Result>>() {
 
-            override fun processResponse(response: ApiResult<Stocks.Result>): List<Stocks.Result>
-                = response.items
+            override fun processResponse(response: ApiResult<Stocks.Result>): List<Stocks.Result> {
+                val ciccio = response.items
+                return ciccio
+            }
 
             override suspend fun saveCallResults(items: List<Stocks.Result>)
                 = dao.save(items)

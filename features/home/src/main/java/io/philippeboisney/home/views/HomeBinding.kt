@@ -28,10 +28,10 @@ object HomeBinding {
         }
     }
 
-    @BindingAdapter("app:imageUrl")
-    @JvmStatic fun loadImage(view: ImageView, url: String) {
-        Glide.with(view.context).load(url).apply(RequestOptions.circleCropTransform()).into(view)
-    }
+//    @BindingAdapter("app:imageUrl")
+//    @JvmStatic fun loadImage(view: ImageView, url: String) {
+//        Glide.with(view.context).load(url).apply(RequestOptions.circleCropTransform()).into(view)
+//    }
 
     @BindingAdapter("app:showWhenEmptyList")
     @JvmStatic fun showMessageErrorWhenEmptyList(view: View, resource: Resource<List<Stocks.Result>>?) {
