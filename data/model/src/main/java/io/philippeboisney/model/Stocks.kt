@@ -12,72 +12,73 @@ data class Stocks(
     val marketSummaryAndSparkResponse: MarketSummaryAndSparkResponse) {
 
     data class MarketSummaryAndSparkResponse(
-        @SerializedName("result")
-        val result: List<Result>,
-        @SerializedName("error")
-        val error: Any?
+            @SerializedName("error")
+            val error: Any?,
+
+            @SerializedName("result")
+            val result: List<Result>
     ) {
         data class Result(
-            @SerializedName("fullExchangeName")
-            val fullExchangeName: String,
+                @SerializedName("fullExchangeName")
+                val fullExchangeName: String,
 
-            @SerializedName("exchange")
-            val exchange: String?,
+                @SerializedName("exchange")
+                val exchange: String?,
 
-            @SerializedName("exchangeDataDelayedBy")
-            val exchangeDataDelayedBy: Int?,
+                @SerializedName("exchangeDataDelayedBy")
+                val exchangeDataDelayedBy: Int?,
 
-            @SerializedName("exchangeTimezoneName")
-            val exchangeTimezoneName: String?,
+                @SerializedName("exchangeTimezoneName")
+                val exchangeTimezoneName: String?,
 
-            @SerializedName("exchangeTimezoneShortName")
-            val exchangeTimezoneShortName: String?,
+                @SerializedName("exchangeTimezoneShortName")
+                val exchangeTimezoneShortName: String?,
 
-            @SerializedName("language")
-            val language: String?,
+                @SerializedName("language")
+                val language: String?,
 
-            @SerializedName("market")
-            val market: String?,
+                @SerializedName("market")
+                val market: String?,
 
-            @SerializedName("marketState")
-            val marketState: String?,
+                @SerializedName("marketState")
+                val marketState: String?,
 
-            @SerializedName("priceHint")
-            val priceHint: Int?,
+                @SerializedName("priceHint")
+                val priceHint: Int?,
 
-            @SerializedName("quoteType")
-            val quoteType: String?,
+                @SerializedName("quoteType")
+                val quoteType: String?,
 
-            @SerializedName("region")
-            val region: String?,
+                @SerializedName("region")
+                val region: String?,
 
-            @SerializedName("shortName")
-            val shortName: String?,
+                @SerializedName("shortName")
+                val shortName: String?,
 
-            @SerializedName("symbol")
-            val symbol: String?,
+                @SerializedName("symbol")
+                val symbol: String?,
 
-            var lastRefreshed: Date,
+                var lastRefreshed: Date,
 
-            @Expose(serialize = false)
-            val regularMarketTime: RegularMarketTime?,
+                @Expose(serialize = false)
+                val regularMarketTime: RegularMarketTime?,
 
-            val spark: Spark?,
+                val spark: Spark?,
 
-            @SerializedName("gmtOffSetMilliseconds")
-            val gmtOffSetMilliseconds: Int?,
+                @SerializedName("gmtOffSetMilliseconds")
+                val gmtOffSetMilliseconds: Int?,
 
-            @SerializedName("firstTradeDateMilliseconds")
-            val firstTradeDateMilliseconds: Int?,
+                @SerializedName("firstTradeDateMilliseconds")
+                val firstTradeDateMilliseconds: Int?,
 
-            @SerializedName("tradeable")
-            val tradeable: Boolean?,
+                @SerializedName("tradeable")
+                val tradeable: Boolean?,
 
-            @SerializedName("sourceInterval")
-            val sourceInterval: Int?,
+                @SerializedName("sourceInterval")
+                val sourceInterval: Int?,
 
-            @SerializedName("triggerable")
-            val triggerable: Boolean?
+                @SerializedName("triggerable")
+                val triggerable: Boolean?
         ) {
             data class RegularMarketTime(
                 @SerializedName("raw")
@@ -116,4 +117,10 @@ data class Stocks(
     }
 }
 
-data class StocksUI(val fullExchangeName: String, val symbol: String?)
+data class StocksUI(
+    @SerializedName("fullExchangeName")
+    val fullExchangeName: String,
+
+    @SerializedName("symbol")
+    val symbol: String?
+)

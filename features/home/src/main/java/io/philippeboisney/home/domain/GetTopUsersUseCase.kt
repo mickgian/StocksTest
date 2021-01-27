@@ -8,6 +8,7 @@ import io.philippeboisney.model.StocksUI
 import io.philippeboisney.model.User
 import io.philippeboisney.repository.StocksRepository
 import io.philippeboisney.repository.utils.Resource
+import kotlinx.coroutines.Deferred
 
 /**
  * Use case that gets a [Resource][List][User] from [UserRepository]
