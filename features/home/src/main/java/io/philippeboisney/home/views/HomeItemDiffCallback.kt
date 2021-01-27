@@ -2,10 +2,11 @@ package io.philippeboisney.home.views
 
 import androidx.recyclerview.widget.DiffUtil
 import io.philippeboisney.model.Stocks
+import io.philippeboisney.model.StocksUI
 import io.philippeboisney.model.User
 
-class HomeItemDiffCallback(private val oldList: List<Stocks.Result>,
-                           private val newList: List<Stocks.Result>) : DiffUtil.Callback() {
+class HomeItemDiffCallback(private val oldList: List<StocksUI>,
+                           private val newList: List<StocksUI>) : DiffUtil.Callback() {
 
     override fun getOldListSize() = oldList.size
 

@@ -45,7 +45,7 @@ class DetailViewModel(private val getUserDetailUseCase: GetUserDetailUseCase,
 
     private fun getUserDetail(forceRefresh: Boolean) = viewModelScope.launch(dispatchers.main) {
         _user.removeSource(userSource) // We make sure there is only one source of livedata (allowing us properly refresh)
-        withContext(dispatchers.io) { userSource = getUserDetailUseCase(forceRefresh = forceRefresh, login = argsLogin) }
+        //withContext(dispatchers.io) { userSource = getUserDetailUseCase(forceRefresh = forceRefresh, login = argsLogin) }
         _user.addSource(userSource) {
             _user.value = it.data
             _isLoading.value = it.status

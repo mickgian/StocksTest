@@ -5,6 +5,7 @@ import io.philippeboisney.common.base.BaseViewModel
 import io.philippeboisney.common.utils.Event
 import io.philippeboisney.home.domain.GetTopUsersUseCase
 import io.philippeboisney.model.Stocks
+import io.philippeboisney.model.StocksUI
 import io.philippeboisney.model.User
 import io.philippeboisney.repository.AppDispatchers
 import io.philippeboisney.repository.utils.Resource
@@ -23,24 +24,24 @@ class HomeViewModel(private val getTopUsersUseCase: GetTopUsersUseCase,
 //    val users: LiveData<Resource<List<User>>> get() = _users
 //    private var usersSource: LiveData<Resource<List<User>>> = MutableLiveData()
 
-    private val _stocks = MediatorLiveData<Resource<List<Stocks.Result>>>()
-    val stocks: LiveData<Resource<List<Stocks.Result>>> get() = _stocks
-    private var stocksSource: LiveData<Resource<List<Stocks.Result>>> = MutableLiveData()
+    private val _stocks = MediatorLiveData<Resource<List<StocksUI>>>()
+    val stocks: LiveData<Resource<List<StocksUI>>> get() = _stocks
+    private var stocksSource: LiveData<Resource<List<StocksUI>>> = MutableLiveData()
 
     init {
 //        getUsers(false)
-        getStocks(false)
+        getStocks()
     }
 
     // PUBLIC ACTIONS ---
-    fun userClicksOnItem(stocks: Stocks.Result)
+    fun userClicksOnItem(stocks: StocksUI)
             = navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(stocks.fullExchangeName))
 
 //    fun userRefreshesItems()
 //            = getUsers(true)
 
     fun userRefreshesItems()
-        = getStocks(true)
+        = getStocks()
 
     // ---
 
@@ -53,9 +54,9 @@ class HomeViewModel(private val getTopUsersUseCase: GetTopUsersUseCase,
 //        }
 //    }
 
-    private fun getStocks(forceRefresh: Boolean) = viewModelScope.launch(dispatchers.main) {
+    private fun getStocks() = viewModelScope.launch(dispatchers.main) {
         _stocks.removeSource(stocksSource) // We make sure there is only one source of livedata (allowing us properly refresh)
-        withContext(dispatchers.io) { stocksSource = getTopUsersUseCase(forceRefresh = forceRefresh) }
+        withContext(dispatchers.io) { stocksSource = getTopUsersUseCase() }
         _stocks.addSource(stocksSource) {
             _stocks.value = it
             if (it.status == Resource.Status.ERROR) _snackbarError.value = Event(R.string.an_error_happened)

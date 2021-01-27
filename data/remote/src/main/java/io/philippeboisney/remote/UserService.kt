@@ -17,12 +17,3 @@ interface UserService {
     @GET("users/{login}")
     fun fetchUserDetailsAsync(@Path("login") login: String): Deferred<User>
 }
-
-interface StocksService {
-
-    @GET("market/v2/get-summary")
-    fun fetchStocksAsync(): Deferred<ApiResult<Stocks.Result>>
-
-    @GET("users/{login}")
-    fun fetchStocksDetailsAsync(@Path("login") login: String): Deferred<User>
-}

@@ -1,12 +1,13 @@
 package io.philippeboisney.home.domain
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import io.philippeboisney.model.Stocks
+import io.philippeboisney.model.StocksUI
 import io.philippeboisney.model.User
 import io.philippeboisney.repository.StocksRepository
 import io.philippeboisney.repository.utils.Resource
-import io.philippeboisney.repository.UserRepository
 
 /**
  * Use case that gets a [Resource][List][User] from [UserRepository]
@@ -25,9 +26,33 @@ import io.philippeboisney.repository.UserRepository
 
 class GetTopUsersUseCase(private val repository: StocksRepository) {
 
-    suspend operator fun invoke(forceRefresh: Boolean = false): LiveData<Resource<List<Stocks.Result>>> {
-        return Transformations.map(repository.getStocksWithCache(forceRefresh)) {
-            it // Place here your specific logic actions
+    suspend operator fun invoke(): LiveData<Resource<List<StocksUI>>> {
+        return repository.getStocksWithCache().let { resource ->
+            val liveData = MutableLiveData<Resource<List<Stocks>>> ()
+            liveData.postValue(resource)
+
+            Transformations.map(liveData) {
+                val getStocksList: MutableList<StocksUI> = mutableListOf()
+                resource.data?.forEach { stock ->
+                    stock.marketSummaryAndSparkResponse.let { stockResult ->
+                        stockResult.result.let { stockResultList ->
+                            stockResultList.forEach {
+                                val stockUI =
+                                    StocksUI(
+                                        fullExchangeName = it.fullExchangeName,
+                                        symbol = it.symbol
+                                    )
+                                getStocksList.add(stockUI)
+                            }
+                        }
+                    }
+                }
+                return@map Resource<List<StocksUI>>(
+                    data = getStocksList,
+                    status = resource.status,
+                    error = resource.error
+                )
+            }
         }
     }
 }

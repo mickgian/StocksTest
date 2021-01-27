@@ -32,11 +32,9 @@ fun createRemoteModule(baseUrl: String) = module {
     }
 
     // factory{ get<Retrofit>().create(UserService::class.java) }
-
-    factory { get<Retrofit>().create(StocksService::class.java) }
-
     // factory { UserDatasource(get()) }
 
+    factory { get<Retrofit>().create(StocksService::class.java) }
     factory { StockDataSource(get()) }
 }
 

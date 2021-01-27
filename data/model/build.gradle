@@ -5,3 +5,8 @@ dependencies {
     implementation Libraries.gson
     implementation Libraries.roomRunTime
 }
+compileKotlin {
+    kotlinOptions {
+        languageVersion = "1.3"
+    }
+}

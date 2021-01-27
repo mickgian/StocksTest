@@ -4,7 +4,7 @@ apply from: '../../android_commons.gradle'
 dependencies {
     // MODULES
     implementation project(Modules.remote)
-    implementation project(Modules.local)
+//    implementation project(Modules.local)
     api project(Modules.model)
     // ANDROID
     implementation KotlinLibraries.kotlinCoroutineCore
