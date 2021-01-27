@@ -1,11 +1,6 @@
 package io.philippeboisney.model
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.util.*
-import kotlin.collections.ArrayList
 
 data class Stocks(
     @SerializedName("marketSummaryAndSparkResponse")
@@ -34,6 +29,9 @@ data class Stocks(
                 @SerializedName("exchangeTimezoneShortName")
                 val exchangeTimezoneShortName: String?,
 
+                @SerializedName("firstTradeDateMilliseconds")
+                val firstTradeDateMilliseconds: Int?,
+
                 @SerializedName("language")
                 val language: String?,
 
@@ -52,30 +50,30 @@ data class Stocks(
                 @SerializedName("region")
                 val region: String?,
 
+                @SerializedName("regularMarketPreviousClose")
+                val regularMarketPreviousClose: RegularMarketPreviousClose,
+
+                @SerializedName("regularMarketTime")
+                val regularMarketTime: RegularMarketTime?,
+
                 @SerializedName("shortName")
                 val shortName: String?,
+
+                @SerializedName("sourceInterval")
+                val sourceInterval: Int?,
+
+                @SerializedName("spark")
+                val spark: Spark?,
 
                 @SerializedName("symbol")
                 val symbol: String?,
 
-                var lastRefreshed: Date,
-
-                @Expose(serialize = false)
-                val regularMarketTime: RegularMarketTime?,
-
-                val spark: Spark?,
-
                 @SerializedName("gmtOffSetMilliseconds")
                 val gmtOffSetMilliseconds: Int?,
-
-                @SerializedName("firstTradeDateMilliseconds")
-                val firstTradeDateMilliseconds: Int?,
 
                 @SerializedName("tradeable")
                 val tradeable: Boolean?,
 
-                @SerializedName("sourceInterval")
-                val sourceInterval: Int?,
 
                 @SerializedName("triggerable")
                 val triggerable: Boolean?
@@ -88,6 +86,14 @@ data class Stocks(
                 val fmt: String?
             )
 
+            data class RegularMarketPreviousClose(
+                @SerializedName("fmt")
+                val fmt: String,
+
+                @SerializedName("raw")
+                val raw: Double
+            )
+
             data class Spark(
                 @SerializedName("symbol")
                 val symbol: String?,
@@ -98,8 +104,8 @@ data class Stocks(
                 @SerializedName("start")
                 val start: Int?,
 
-                @SerializedName("time")
-                val time: List<Int>?,
+                @SerializedName("timestamp")
+                val timestamp: List<Int>?,
 
                 @SerializedName("dataGranularity")
                 val dataGranularity: Int?,
@@ -111,7 +117,7 @@ data class Stocks(
                 val chartPreviousClose: Int?,
 
                 @SerializedName("close")
-                val close: List<Float>?
+                val close: List<Double>?
             )
         }
     }
