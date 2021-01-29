@@ -27,32 +27,22 @@ import kotlinx.coroutines.Deferred
 
 class GetTopUsersUseCase(private val repository: StocksRepository) {
 
-    suspend operator fun invoke(): LiveData<Resource<List<StocksUI>>> {
+    suspend operator fun invoke(): LiveData<List<StocksUI>> {
         return repository.getStocksWithCache().let { resource ->
-            val liveData = MutableLiveData<Resource<List<Stocks>>> ()
+            val liveData = MutableLiveData<Stocks> ()
             liveData.postValue(resource)
 
             Transformations.map(liveData) {
                 val getStocksList: MutableList<StocksUI> = mutableListOf()
-                resource.data?.forEach { stock ->
-                    stock.marketSummaryAndSparkResponse.let { stockResult ->
-                        stockResult.result.let { stockResultList ->
-                            stockResultList.forEach {
-                                val stockUI =
-                                    StocksUI(
+                resource.marketSummaryAndSparkResponse.result.forEach() {
+                        val stockUI =
+                                StocksUI(
                                         fullExchangeName = it.fullExchangeName,
                                         symbol = it.symbol
-                                    )
-                                getStocksList.add(stockUI)
-                            }
-                        }
+                                )
+                        getStocksList.add(stockUI)
                     }
-                }
-                return@map Resource<List<StocksUI>>(
-                    data = getStocksList,
-                    status = resource.status,
-                    error = resource.error
-                )
+                return@map getStocksList
             }
         }
     }

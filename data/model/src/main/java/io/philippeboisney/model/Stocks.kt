@@ -30,7 +30,7 @@ data class Stocks(
                 val exchangeTimezoneShortName: String?,
 
                 @SerializedName("firstTradeDateMilliseconds")
-                val firstTradeDateMilliseconds: Int?,
+                val firstTradeDateMilliseconds: Double?,
 
                 @SerializedName("language")
                 val language: String?,
@@ -111,10 +111,10 @@ data class Stocks(
                 val dataGranularity: Int?,
 
                 @SerializedName("previousClose")
-                val previousClose: Int?,
+                val previousClose: Double?,
 
                 @SerializedName("chartPreviousClose")
-                val chartPreviousClose: Int?,
+                val chartPreviousClose: Double?,
 
                 @SerializedName("close")
                 val close: List<Double>?

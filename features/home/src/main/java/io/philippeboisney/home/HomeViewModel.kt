@@ -24,9 +24,9 @@ class HomeViewModel(private val getTopUsersUseCase: GetTopUsersUseCase,
 //    val users: LiveData<Resource<List<User>>> get() = _users
 //    private var usersSource: LiveData<Resource<List<User>>> = MutableLiveData()
 
-    private val _stocks = MediatorLiveData<Resource<List<StocksUI>>>()
-    val stocks: LiveData<Resource<List<StocksUI>>> get() = _stocks
-    private var stocksSource: LiveData<Resource<List<StocksUI>>> = MutableLiveData()
+    private val _stocks = MediatorLiveData<List<StocksUI>>()
+    val stocks: LiveData<List<StocksUI>> get() = _stocks
+    private var stocksSource: LiveData<List<StocksUI>> = MutableLiveData()
 
     init {
 //        getUsers(false)
@@ -59,7 +59,8 @@ class HomeViewModel(private val getTopUsersUseCase: GetTopUsersUseCase,
         withContext(dispatchers.io) { stocksSource = getTopUsersUseCase() }
         _stocks.addSource(stocksSource) {
             _stocks.value = it
-            if (it.status == Resource.Status.ERROR) _snackbarError.value = Event(R.string.an_error_happened)
+//            if (it.status == Resource.Status.ERROR) _snackbarError.value = Event(R.string.an_error_happened)
+            if (it.isEmpty()) _snackbarError.value = Event(R.string.an_error_happened)
         }
     }
 }

@@ -23,9 +23,9 @@ object HomeBinding {
     }
 
     @BindingAdapter("app:items")
-    @JvmStatic fun setItems(recyclerView: RecyclerView, resource: Resource<List<StocksUI>>?) {
+    @JvmStatic fun setItems(recyclerView: RecyclerView, resource: List<StocksUI>?) {
         with(recyclerView.adapter as HomeAdapter) {
-            resource?.data?.let { updateData(it) }
+            resource?.let { updateData(it) }
         }
     }
 
