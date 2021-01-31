@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import io.philippeboisney.model.Stocks
 import io.philippeboisney.model.StocksUI
-import io.philippeboisney.model.User
 import io.philippeboisney.repository.utils.Resource
 
 object HomeBinding {

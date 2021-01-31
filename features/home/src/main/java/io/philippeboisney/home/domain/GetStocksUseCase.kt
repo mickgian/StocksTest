@@ -5,10 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import io.philippeboisney.model.Stocks
 import io.philippeboisney.model.StocksUI
-import io.philippeboisney.model.User
 import io.philippeboisney.repository.StocksRepository
 import io.philippeboisney.repository.utils.Resource
-import kotlinx.coroutines.Deferred
 
 /**
  * Use case that gets a [Resource][List][User] from [UserRepository]
@@ -25,7 +23,7 @@ import kotlinx.coroutines.Deferred
 //    }
 //}
 
-class GetTopUsersUseCase(private val repository: StocksRepository) {
+class GetStocksUseCase(private val repository: StocksRepository) {
 
     suspend operator fun invoke(): LiveData<Resource<List<StocksUI>>> {
         return repository.getStocksWithCache().let { resource ->

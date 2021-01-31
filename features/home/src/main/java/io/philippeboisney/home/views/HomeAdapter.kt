@@ -6,17 +6,13 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import io.philippeboisney.home.HomeViewModel
 import io.philippeboisney.home.R
-import io.philippeboisney.model.Stocks
 import io.philippeboisney.model.StocksUI
-import io.philippeboisney.model.User
-import io.philippeboisney.repository.utils.Resource
 
 class HomeAdapter(private val viewModel: HomeViewModel): RecyclerView.Adapter<HomeViewHolder>() {
 
     private val stocks: MutableList<StocksUI> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
-            = HomeViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_home, parent, false))
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = HomeViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_home, parent, false))
 
     override fun getItemCount(): Int
             = stocks.size
