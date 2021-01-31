@@ -1,6 +1,6 @@
 package io.philippeboisney.repository.utils
 
-data class Resource<out T>(val status: Status, val data: T?, val error: Throwable?) {
+data class Resource<out T>(val status: Status, val data: T? = null, val error: Throwable? = null) {
     companion object {
         fun <T> success(data: T?): Resource<T> {
             return Resource(
@@ -10,7 +10,7 @@ data class Resource<out T>(val status: Status, val data: T?, val error: Throwabl
             )
         }
 
-        fun <T> error(error: Throwable, data: T?): Resource<T> {
+        fun <T> error(error: Throwable, data: T? = null): Resource<T> {
             return Resource(
                 Status.ERROR,
                 data,
