@@ -14,32 +14,22 @@ import io.philippeboisney.repository.utils.Resource
  *
  * In this Use Case, I'm just doing nothing... ¯\_(ツ)_/¯
  */
-//class GetTopUsersUseCase(private val repository: UserRepository) {
-//
-//    suspend operator fun invoke(forceRefresh: Boolean = false): LiveData<Resource<List<User>>> {
-//        return Transformations.map(repository.getTopUsersWithCache(forceRefresh)) {
-//            it // Place here your specific logic actions
-//        }
-//    }
-//}
 
 class GetStocksUseCase(private val repository: StocksRepository) {
 
     suspend operator fun invoke(): LiveData<Resource<List<StocksUI>>> {
-        return repository.getStocksWithCache().let { resource ->
+        return repository.getStocksResource().let { resource ->
             val liveData = MutableLiveData<Resource<Stocks>> ()
             liveData.postValue(resource)
 
             Transformations.map(liveData) {
                 val getStocksList: MutableList<StocksUI> = mutableListOf()
-                resource.data.let {
-                    it?.marketSummaryAndSparkResponse?.result?.forEach { result ->
-                        val stockUI =
-                                StocksUI(
-                                        fullExchangeName = result.fullExchangeName,
-                                        symbol = result.symbol
-                                )
-                        getStocksList.add(stockUI)
+                resource.data.let { stocks ->
+                    stocks?.marketSummaryAndSparkResponse?.result?.forEach {
+                        getStocksList.add(StocksUI(
+                                fullExchangeName = it.fullExchangeName,
+                                symbol = it.symbol
+                        ))
                     }
                 }
 

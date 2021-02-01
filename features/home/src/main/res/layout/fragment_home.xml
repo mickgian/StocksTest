@@ -21,7 +21,6 @@
                 android:layout_height="match_parent"
                 app:showWhenLoading="@{viewmodel.stocks}"
                 app:onRefreshListener="@{() -> viewmodel.userRefreshesItems()}">
-<!--            app:showWhenLoading="@{viewmodel.stocks}"-->
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,7 +43,6 @@
                         app:showWhenEmptyList="@{viewmodel.stocks}"
                         android:textStyle="bold"
                         android:visibility="gone"/>
-<!--                app:showWhenEmptyList="@{viewmodel.stocks}"-->
 
 <!--                <ImageView-->
 <!--                        android:layout_width="wrap_content"-->

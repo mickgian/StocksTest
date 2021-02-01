@@ -7,11 +7,11 @@ import io.philippeboisney.repository.utils.Resource
 import kotlinx.coroutines.Deferred
 
 interface StocksRepository {
-    suspend fun getStocksWithCache() : Resource<Stocks>
+    suspend fun getStocksResource() : Resource<Stocks>
 }
 
 class StocksRepositoryImpl(private val dataSource: StockDataSource) : StocksRepository {
-    override suspend fun getStocksWithCache(): Resource<Stocks> {
+    override suspend fun getStocksResource(): Resource<Stocks> {
 
         return try {
             val response = dataSource.fetchStocksAsync().await()
