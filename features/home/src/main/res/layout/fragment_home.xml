@@ -61,13 +61,72 @@
 <!--                        app:layout_constraintHorizontal_bias="0.5"-->
 <!--                        android:visibility="gone"-->
 <!--                        android:tint="#414141"/>-->
+                <LinearLayout
+                    android:id="@+id/tableHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:id="@+id/tableHeaderSymbol"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textSymbol"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/symbol"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tableHeaderName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="@string/name" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/tableHeaderValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="@string/close" />
+                    </LinearLayout>
+
+                </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/fragment_home_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        app:items="@{viewmodel.stocks}"
-                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                    android:id="@+id/fragment_home_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="32dp"
+                    app:items="@{viewmodel.stocks}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/tableHeader" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
