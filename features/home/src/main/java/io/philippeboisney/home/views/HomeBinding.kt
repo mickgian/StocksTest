@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import io.philippeboisney.model.Stocks
 import io.philippeboisney.model.StocksUI
-import io.philippeboisney.model.User
 import io.philippeboisney.repository.utils.Resource
 
 object HomeBinding {
@@ -23,9 +21,9 @@ object HomeBinding {
     }
 
     @BindingAdapter("app:items")
-    @JvmStatic fun setItems(recyclerView: RecyclerView, resource: List<StocksUI>?) {
+    @JvmStatic fun setItems(recyclerView: RecyclerView, resource: Resource<List<StocksUI>>?) {
         with(recyclerView.adapter as HomeAdapter) {
-            resource?.let { updateData(it) }
+            resource?.let { updateData(it.data) }
         }
     }
 
