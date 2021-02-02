@@ -128,5 +128,8 @@ data class StocksUI(
     val fullExchangeName: String,
 
     @SerializedName("symbol")
-    val symbol: String?
+    val symbol: String?,
+
+    @SerializedName("end")
+    val end: String?
 )
