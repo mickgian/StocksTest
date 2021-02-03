@@ -45,5 +45,5 @@ class DetailFragment : BaseFragment() {
     override fun getViewModel(): BaseViewModel = viewModel
 
     override fun getExtras(): FragmentNavigator.Extras =
-        FragmentNavigatorExtras(binding.fragmentDetailAvatar to getString(R.string.transition_avatar_dest))
+        FragmentNavigatorExtras(binding.fragmentDetailCompany to getString(R.string.transition_avatar_dest))
 }

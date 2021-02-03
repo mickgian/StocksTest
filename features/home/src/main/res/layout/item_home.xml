@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="@{() -> viewmodel.userClicksOnItem(stock)}"
+            android:onClick="@{() -> viewmodel.userClicksOnItem(stock.symbol)}"
             tools:context=".HomeFragment">
 
         <TextView

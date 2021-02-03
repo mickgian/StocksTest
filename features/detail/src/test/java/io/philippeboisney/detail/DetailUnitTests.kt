@@ -11,7 +11,7 @@ import io.mockk.verify
 import io.philippeboisney.common.utils.Event
 import io.philippeboisney.common_test.datasets.UserDataset.FAKE_USERS
 import io.philippeboisney.common_test.extensions.blockingObserve
-import io.philippeboisney.detail.domain.GetUserDetailUseCase
+import io.philippeboisney.detail.domain.GetStocksDetailUseCase
 import io.philippeboisney.model.User
 import io.philippeboisney.navigation.NavigationCommand
 import io.philippeboisney.repository.AppDispatchers
@@ -34,14 +34,14 @@ class DetailUnitTests {
     @JvmField
     val instantExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var getUserDetailUseCase: GetUserDetailUseCase
+    private lateinit var getStocksDetailUseCase: GetStocksDetailUseCase
     private lateinit var viewModel: DetailViewModel
     private val appDispatchers = AppDispatchers(Dispatchers.Unconfined, Dispatchers.Unconfined)
 
     @Before
     fun setUp() {
-        getUserDetailUseCase = mockk()
-        viewModel = DetailViewModel(getUserDetailUseCase, appDispatchers)
+        getStocksDetailUseCase = mockk()
+        viewModel = DetailViewModel(getStocksDetailUseCase, appDispatchers)
     }
 
     @Test
@@ -52,7 +52,7 @@ class DetailUnitTests {
         val result = Resource.success(FAKE_USERS.first())
         val events = MutableLiveData<Resource<User>>().apply { value = loading }
 
-        coEvery { getUserDetailUseCase(false, "fake") } returns events
+        coEvery { getStocksDetailUseCase(false, "fake") } returns events
 
         viewModel.user.observeForever(observerResult)
         viewModel.isLoading.observeForever(observerLoading)
@@ -78,7 +78,7 @@ class DetailUnitTests {
     fun `User's detail refreshed when user pulls to refresh`() {
         val observer = mockk<Observer<User>>(relaxed = true)
         val result = Resource.success(FAKE_USERS.first())
-        coEvery { getUserDetailUseCase(any(), "fake") } returns MutableLiveData<Resource<User>>().apply { value = result }
+        coEvery { getStocksDetailUseCase(any(), "fake") } returns MutableLiveData<Resource<User>>().apply { value = result }
 
         viewModel.user.observeForever(observer)
         viewModel.loadDataWhenActivityStarts("fake")
@@ -95,7 +95,7 @@ class DetailUnitTests {
     @Test
     fun `User clicks on avatar image and go to DetailImageFragment`() {
         val event = Event(NavigationCommand.To(DetailFragmentDirections.actionDetailFragmentToImageDetailFragment(FAKE_USERS.first().avatarUrl)))
-        coEvery { getUserDetailUseCase(false, "fake") } returns MutableLiveData<Resource<User>>().apply { value = Resource.success(FAKE_USERS.first()) }
+        coEvery { getStocksDetailUseCase(false, "fake") } returns MutableLiveData<Resource<User>>().apply { value = Resource.success(FAKE_USERS.first()) }
 
         viewModel.userClicksOnAvatarImage(FAKE_USERS.first())
 
