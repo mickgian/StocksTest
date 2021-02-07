@@ -80,7 +80,7 @@ data class Stocks(
         ) {
             data class RegularMarketTime(
                 @SerializedName("raw")
-                val raw: Int?,
+                val raw: Double?,
 
                 @SerializedName("fmt")
                 val fmt: String?
@@ -88,10 +88,10 @@ data class Stocks(
 
             data class RegularMarketPreviousClose(
                 @SerializedName("fmt")
-                val fmt: String,
+                val fmt: String?,
 
                 @SerializedName("raw")
-                val raw: Double
+                val raw: Double?
             )
 
             data class Spark(
@@ -276,7 +276,7 @@ data class SummaryStock(
                 val longFmt: String?,
 
                 @SerializedName("raw")
-                val raw: Int?
+                val raw: Double?
         )
 
         data class FmtRawDataClass(
@@ -483,7 +483,7 @@ data class SummaryStock(
                 val fmt: String?,
 
                 @SerializedName("raw")
-                val raw: Int?
+                val raw: Double?
         )
 
         data class FmtLongfmtRawDataClass(
@@ -494,7 +494,7 @@ data class SummaryStock(
                 val longFmt: String?,
 
                 @SerializedName("raw")
-                val raw: Int?
+                val raw: Double?
         )
 
         data class FtmStringRawDoubleDataClass(
