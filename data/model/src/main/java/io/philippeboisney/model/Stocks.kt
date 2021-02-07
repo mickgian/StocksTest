@@ -148,15 +148,11 @@ data class SummaryStock(
     val symbol: String?,
 
     @SerializedName("financialsTemplate")
-    val financialsTemplate: FinancialsTemplate?,
+    val financialsTemplate: Any?,
     
     @SerializedName("pageViews")
-    val pageViews: PageViews?
+    val pageViews: Any?
 ) {
-    class FinancialsTemplate()
-
-    class PageViews()
-
     data class Price(
             @SerializedName("averageDailyVolume10Day")
             val averageDailyVolume10Day: FmtLongfmtRawDataClass?,
@@ -165,7 +161,7 @@ data class SummaryStock(
             val averageDailyVolume3Month: FmtLongfmtRawDataClass?,
 
             @SerializedName("circulatingSupply")
-            val circulatingSupply: EmpityDataClass?,
+            val circulatingSupply: Any?,
 
             @SerializedName("currency")
             val currency: String?,
@@ -183,16 +179,16 @@ data class SummaryStock(
             val exchangeName: String?,
 
             @SerializedName("fromCurrency")
-            val fromCurrency: String?,
+            val fromCurrency: Any?,
 
             @SerializedName("lastMarket")
-            val lastMarket: String?,
+            val lastMarket: Any?,
 
             @SerializedName("longName")
-            val longName: String?,
+            val longName: Any?,
 
             @SerializedName("marketCap")
-            val marketCap: EmpityDataClass?,
+            val marketCap: Any?,
 
             @SerializedName("marketState")
             val marketState: String?,
@@ -201,19 +197,19 @@ data class SummaryStock(
             val maxAge: Int?,
 
             @SerializedName("openInterest")
-            val openInterest: EmpityDataClass?,
+            val openInterest: Any?,
 
             @SerializedName("postMarketChange")
-            val postMarketChange: EmpityDataClass?,
+            val postMarketChange: Any?,
 
             @SerializedName("postMarketPrice")
-            val postMarketPrice: EmpityDataClass?,
+            val postMarketPrice: Any?,
 
             @SerializedName("preMarketChange")
-            val preMarketChange: EmpityDataClass?,
+            val preMarketChange: Any?,
 
             @SerializedName("preMarketPrice")
-            val preMarketPrice: EmpityDataClass?,
+            val preMarketPrice: Any?,
 
             @SerializedName("priceHint")
             val priceHint: FmtLongfmtRawDataClass?,
@@ -255,22 +251,22 @@ data class SummaryStock(
             val shortName: String?,
 
             @SerializedName("strikePrice")
-            val strikePrice: EmpityDataClass?,
+            val strikePrice: Any?,
 
             @SerializedName("symbol")
             val symbol: String?,
 
             @SerializedName("toCurrency")
-            val toCurrency: String?,
+            val toCurrency: Any?,
 
             @SerializedName("underlyingSymbol")
-            val underlyingSymbol: String?,
+            val underlyingSymbol: Any?,
 
             @SerializedName("volume24Hr")
-            val volume24Hr: EmpityDataClass?,
+            val volume24Hr: Any?,
 
             @SerializedName("volumeAllCurrencies")
-            val volumeAllCurrencies: EmpityDataClass?
+            val volumeAllCurrencies: Any?
     ) {
         data class FmtLongfmtRawDataClass(
                 @SerializedName("fmt")
@@ -282,8 +278,6 @@ data class SummaryStock(
                 @SerializedName("raw")
                 val raw: Int?
         )
-
-        class EmpityDataClass()
 
         data class FmtRawDataClass(
                 @SerializedName("fmt")
@@ -328,10 +322,10 @@ data class SummaryStock(
 
     data class SummaryDetail(
             @SerializedName("algorithm")
-            val algorithm: String?,
+            val algorithm: Any?,
 
             @SerializedName("ask")
-            val ask: FtmString_RawIndDataClass?,
+            val ask: FtmStringRawIndDataClass?,
 
             @SerializedName("askSize")
             val askSize: FmtLongfmtRawDataClass?,
@@ -346,144 +340,144 @@ data class SummaryStock(
             val averageVolume10days: FmtLongfmtRawDataClass?,
 
             @SerializedName("beta")
-            val beta: EmpityDataClass?,
+            val beta: Any?,
 
             @SerializedName("bid")
-            val bid: FtmString_RawIndDataClass?,
+            val bid: FtmStringRawIndDataClass?,
 
             @SerializedName("bidSize")
             val bidSize: FmtLongfmtRawDataClass?,
 
             @SerializedName("circulatingSupply")
-            val circulatingSupply: EmpityDataClass?,
+            val circulatingSupply: Any?,
 
             @SerializedName("currency")
             val currency: String?,
 
             @SerializedName("dayHigh")
-            val dayHigh: FtmString_RawDoubleDataClass?,
+            val dayHigh: FtmStringRawDoubleDataClass?,
 
             @SerializedName("dayLow")
-            val dayLow: FtmString_RawDoubleDataClass?,
+            val dayLow: FtmStringRawDoubleDataClass?,
 
             @SerializedName("dividendRate")
-            val dividendRate: EmpityDataClass?,
+            val dividendRate: Any?,
 
             @SerializedName("dividendYield")
-            val dividendYield: EmpityDataClass?,
+            val dividendYield: Any?,
 
             @SerializedName("exDividendDate")
-            val exDividendDate: EmpityDataClass?,
+            val exDividendDate: Any?,
 
             @SerializedName("expireDate")
-            val expireDate: EmpityDataClass?,
+            val expireDate: Any?,
 
             @SerializedName("fiftyDayAverage")
-            val fiftyDayAverage: FtmString_RawDoubleDataClass?,
+            val fiftyDayAverage: FtmStringRawDoubleDataClass?,
 
             @SerializedName("fiftyTwoWeekHigh")
-            val fiftyTwoWeekHigh: FtmString_RawIndDataClass?,
+            val fiftyTwoWeekHigh: FtmStringRawIndDataClass?,
 
             @SerializedName("fiftyTwoWeekLow")
-            val fiftyTwoWeekLow: FtmString_RawIndDataClass?,
+            val fiftyTwoWeekLow: FtmStringRawIndDataClass?,
 
             @SerializedName("fiveYearAvgDividendYield")
-            val fiveYearAvgDividendYield: EmpityDataClass?,
+            val fiveYearAvgDividendYield: Any?,
 
             @SerializedName("forwardPE")
-            val forwardPE: EmpityDataClass?,
+            val forwardPE: Any?,
 
             @SerializedName("fromCurrency")
-            val fromCurrency: String?,
+            val fromCurrency: Any?,
 
             @SerializedName("lastMarket")
-            val lastMarket: String?,
+            val lastMarket: Any?,
 
             @SerializedName("marketCap")
-            val marketCap: EmpityDataClass?,
+            val marketCap: Any?,
 
             @SerializedName("maxAge")
             val maxAge: Int?,
 
             @SerializedName("maxSupply")
-            val maxSupply: EmpityDataClass?,
+            val maxSupply: Any?,
 
             @SerializedName("navPrice")
-            val navPrice: EmpityDataClass?,
+            val navPrice: Any?,
 
             @SerializedName("open")
-            val `open`: FtmString_RawDoubleDataClass?,
+            val `open`: FtmStringRawDoubleDataClass?,
 
             @SerializedName("openInterest")
-            val openInterest: EmpityDataClass?,
+            val openInterest: Any?,
 
             @SerializedName("payoutRatio")
-            val payoutRatio: EmpityDataClass?,
+            val payoutRatio: Any?,
 
             @SerializedName("previousClose")
-            val previousClose: FtmString_RawDoubleDataClass?,
+            val previousClose: FtmStringRawDoubleDataClass?,
 
             @SerializedName("priceHint")
             val priceHint: FmtLongfmtRawDataClass?,
 
             @SerializedName("priceToSalesTrailing12Months")
-            val priceToSalesTrailing12Months: EmpityDataClass?,
+            val priceToSalesTrailing12Months: Any?,
 
             @SerializedName("regularMarketDayHigh")
-            val regularMarketDayHigh: FtmString_RawDoubleDataClass?,
+            val regularMarketDayHigh: FtmStringRawDoubleDataClass?,
 
             @SerializedName("regularMarketDayLow")
-            val regularMarketDayLow: FtmString_RawDoubleDataClass?,
+            val regularMarketDayLow: FtmStringRawDoubleDataClass?,
 
             @SerializedName("regularMarketOpen")
-            val regularMarketOpen: FtmString_RawDoubleDataClass?,
+            val regularMarketOpen: FtmStringRawDoubleDataClass?,
 
             @SerializedName("regularMarketPreviousClose")
-            val regularMarketPreviousClose: FtmString_RawDoubleDataClass?,
+            val regularMarketPreviousClose: FtmStringRawDoubleDataClass?,
 
             @SerializedName("regularMarketVolume")
             val regularMarketVolume: FmtLongfmtRawDataClass?,
 
             @SerializedName("startDate")
-            val startDate: EmpityDataClass?,
+            val startDate: Any?,
 
             @SerializedName("strikePrice")
-            val strikePrice: EmpityDataClass?,
+            val strikePrice: Any?,
 
             @SerializedName("toCurrency")
-            val toCurrency: String?,
+            val toCurrency: Any?,
 
             @SerializedName("totalAssets")
-            val totalAssets: EmpityDataClass?,
+            val totalAssets: Any?,
 
             @SerializedName("tradeable")
             val tradeable: Boolean?,
 
             @SerializedName("trailingAnnualDividendRate")
-            val trailingAnnualDividendRate: EmpityDataClass?,
+            val trailingAnnualDividendRate: Any?,
 
             @SerializedName("trailingAnnualDividendYield")
-            val trailingAnnualDividendYield: EmpityDataClass?,
+            val trailingAnnualDividendYield: Any?,
 
             @SerializedName("twoHundredDayAverage")
-            val twoHundredDayAverage: FtmString_RawDoubleDataClass?,
+            val twoHundredDayAverage: FtmStringRawDoubleDataClass?,
 
             @SerializedName("volume")
             val volume: FmtLongfmtRawDataClass?,
 
             @SerializedName("volume24Hr")
-            val volume24Hr: EmpityDataClass?,
+            val volume24Hr: Any?,
 
             @SerializedName("volumeAllCurrencies")
-            val volumeAllCurrencies: EmpityDataClass?,
+            val volumeAllCurrencies: Any?,
 
             @SerializedName("yield")
-            val yield: EmpityDataClass?,
+            val yield: Any?,
 
             @SerializedName("ytdReturn")
-            val ytdReturn: EmpityDataClass?
+            val ytdReturn: Any?
     ) {
-        data class FtmString_RawIndDataClass(
+        data class FtmStringRawIndDataClass(
 
                 @SerializedName("fmt")
                 val fmt: String?,
@@ -494,7 +488,7 @@ data class SummaryStock(
 
         data class FmtLongfmtRawDataClass(
                 @SerializedName("fmt")
-                val fmt: String?,
+                val fmt: Any?,
 
                 @SerializedName("longFmt")
                 val longFmt: String?,
@@ -503,9 +497,7 @@ data class SummaryStock(
                 val raw: Int?
         )
 
-        class EmpityDataClass()
-
-        data class FtmString_RawDoubleDataClass(
+        data class FtmStringRawDoubleDataClass(
                 @SerializedName("fmt")
                 val fmt: String?,
 

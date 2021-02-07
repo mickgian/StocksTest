@@ -20,18 +20,20 @@ class GetStocksDetailUseCase(private val repository: StocksRepository) {
             val liveData = MutableLiveData<Resource<SummaryStock>> ()
             liveData.postValue(resource)
 
-            Transformations.map(liveData) {
-//                val getStocksList: MutableList<SummaryStock> = mutableListOf()
-                resource.data.let {
-//                    getStocksList.add(it)
-                    return@map Resource(
-                            data = it,
-                            status = resource.status,
-                            error = resource.error
-                    )
-                }
+            return liveData
+//
+//            Transformations.map(liveData) {
+////                val getStocksList: MutableList<SummaryStock> = mutableListOf()
+//                resource.let {
+////                    getStocksList.add(it)
+//                    return@map Resource(
+//                            data = it.data,
+//                            status = resource.status,
+//                            error = resource.error
+//                    )
+//                }
 
-            }
+//            }
         }
     }
 }

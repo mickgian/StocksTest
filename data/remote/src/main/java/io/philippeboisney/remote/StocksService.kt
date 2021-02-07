@@ -12,5 +12,6 @@ interface StocksService {
     fun fetchStocksAsync(@Query("region") region: String = "IT"): Deferred<Stocks>
 
     @GET("stock/v2/get-summary")
-    fun fetchStocksDetailsAsync(@Query("symbol") symbol: String,  @Query("region") region: String = "IT"): Deferred<SummaryStock>
+    fun fetchStocksDetailsAsync(@Query("symbol") symbol: String): Deferred<SummaryStock>
+//    fun fetchStocksDetailsAsync(@Query("symbol") symbol: String,  @Query("region") region: String = "IT"): Deferred<SummaryStock>
 }

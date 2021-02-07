@@ -12,6 +12,7 @@ import io.philippeboisney.model.User
 import io.philippeboisney.repository.AppDispatchers
 import io.philippeboisney.repository.utils.Resource
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  * A simple [BaseViewModel] that provide the data and handle logic to communicate with the model
@@ -45,7 +46,7 @@ class DetailViewModel(private val getStocksDetailUseCase: GetStocksDetailUseCase
 
     private fun getStockDetail() = viewModelScope.launch(dispatchers.main) {
         _stockDetail.removeSource(stockDetailSource) // We make sure there is only one source of livedata (allowing us properly refresh)
-        //withContext(dispatchers.io) { userSource = getUserDetailUseCase(forceRefresh = forceRefresh, login = argsLogin) }
+        withContext(dispatchers.io) { stockDetailSource = getStocksDetailUseCase(argsSymbol) }
         _stockDetail.addSource(stockDetailSource) {
             _stockDetail.value = it.data
             _isLoading.value = it.status

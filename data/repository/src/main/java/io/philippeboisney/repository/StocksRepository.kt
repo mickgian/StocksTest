@@ -26,6 +26,7 @@ class StocksRepositoryImpl(private val dataSource: StockDataSource) : StocksRepo
     override suspend fun getStocksDetailResource(symbol: String): Resource<SummaryStock> {
         return try {
             val response = dataSource.fetchStocksDetailsAsync(symbol).await()
+            Log.d(response.toString(), "Test")
             Resource(Resource.Status.SUCCESS, response)
         } catch (e: Exception) {
             Resource(Resource.Status.ERROR)
