@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import io.philippeboisney.common.base.BaseViewModel
 import io.philippeboisney.common.utils.Event
 import io.philippeboisney.detail.domain.GetStocksDetailUseCase
+import io.philippeboisney.model.StockDetailUI
 import io.philippeboisney.model.SummaryStock
 import io.philippeboisney.model.User
 import io.philippeboisney.repository.AppDispatchers
@@ -23,10 +24,10 @@ class DetailViewModel(private val getStocksDetailUseCase: GetStocksDetailUseCase
 
     // PRIVATE DATA
     private lateinit var argsSymbol: String
-    private var stockDetailSource: LiveData<Resource<SummaryStock>> = MutableLiveData()
+    private var stockDetailSource: LiveData<Resource<StockDetailUI>> = MutableLiveData()
 
-    private val _stockDetail = MediatorLiveData<SummaryStock>()
-    val stockDetail: LiveData<SummaryStock> get() = _stockDetail
+    private val _stockDetail = MediatorLiveData<StockDetailUI>()
+    val stockDetail: LiveData<StockDetailUI> get() = _stockDetail
     private val _isLoading = MutableLiveData<Resource.Status>()
     val isLoading: LiveData<Resource.Status> get() = _isLoading
 

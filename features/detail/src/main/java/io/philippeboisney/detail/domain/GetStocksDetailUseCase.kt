@@ -3,6 +3,7 @@ package io.philippeboisney.detail.domain
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
+import io.philippeboisney.model.StockDetailUI
 import io.philippeboisney.model.SummaryStock
 import io.philippeboisney.repository.StocksRepository
 import io.philippeboisney.repository.utils.Resource
@@ -15,25 +16,26 @@ import io.philippeboisney.repository.utils.Resource
  */
 class GetStocksDetailUseCase(private val repository: StocksRepository) {
 
-    suspend operator fun invoke(symbol: String): LiveData<Resource<SummaryStock>> {
+    suspend operator fun invoke(symbol: String): LiveData<Resource<StockDetailUI>> {
         return repository.getStocksDetailResource(symbol).let { resource ->
             val liveData = MutableLiveData<Resource<SummaryStock>> ()
             liveData.postValue(resource)
 
-            return liveData
-//
-//            Transformations.map(liveData) {
-////                val getStocksList: MutableList<SummaryStock> = mutableListOf()
-//                resource.let {
-////                    getStocksList.add(it)
-//                    return@map Resource(
-//                            data = it.data,
-//                            status = resource.status,
-//                            error = resource.error
-//                    )
-//                }
-
-//            }
+            Transformations.map(liveData) {
+//                val getStocksList: StockDetailUI = listOf()
+                resource.data.let {
+                    return@map Resource(
+                            data =
+                                StockDetailUI(
+                                    symbol = it?.symbol,
+                                    shortName = it?.quoteType?.shortName,
+                                    regularMarketPrice = it?.price?.regularMarketPrice?.fmt
+                                ),
+                            status = resource.status,
+                            error = resource.error
+                    )
+                }
+            }
         }
     }
 }

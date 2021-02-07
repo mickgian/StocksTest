@@ -506,3 +506,14 @@ data class SummaryStock(
         )
     }
 }
+
+data class StockDetailUI(
+        @SerializedName("symbol")
+        val symbol: String?,
+
+        @SerializedName("shortName")
+        val shortName: String?,
+
+        @SerializedName("regularMarketPrice")
+        val regularMarketPrice: String?
+)
