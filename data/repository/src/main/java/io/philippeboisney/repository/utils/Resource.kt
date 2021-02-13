@@ -5,8 +5,7 @@ data class Resource<out T>(val status: Status, val data: T? = null, val error: T
         fun <T> success(data: T?): Resource<T> {
             return Resource(
                 Status.SUCCESS,
-                data,
-                null
+                data
             )
         }
 
@@ -21,8 +20,7 @@ data class Resource<out T>(val status: Status, val data: T? = null, val error: T
         fun <T> loading(data: T?): Resource<T> {
             return Resource(
                 Status.LOADING,
-                data,
-                null
+                data
             )
         }
     }

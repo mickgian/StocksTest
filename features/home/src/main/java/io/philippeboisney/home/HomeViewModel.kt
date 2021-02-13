@@ -27,8 +27,8 @@ class HomeViewModel(private val getStocksUseCase: GetStocksUseCase,
     }
 
     // PUBLIC ACTIONS ---
-    fun userClicksOnItem(stocks: StocksUI)
-            = navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(stocks.fullExchangeName))
+    fun userClicksOnItem(stocks: String)
+            = navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(stocks))
 
     fun userRefreshesItems()
         = getStocks()
