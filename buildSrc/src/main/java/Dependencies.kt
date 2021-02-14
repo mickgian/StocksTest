@@ -17,6 +17,7 @@ object Modules {
 
     val featureHome = ":features:home"
     val featureDetail = ":features:detail"
+    val featureStocksRank = ":features:stocks-rank"
 }
 
 object Releases {
@@ -25,7 +26,7 @@ object Releases {
 }
 
 object Versions {
-    val kotlin = "1.3.21"
+    val kotlin = "1.3.71"
     val gradle = "3.3.2"
     val compileSdk = 28
     val minSdk = 23
@@ -36,7 +37,7 @@ object Versions {
     val junit = "4.12"
     val androidTestRunner = "1.1.2-alpha02"
     val espressoCore = "3.2.0-alpha02"
-    val retrofit = "2.5.0"
+    val retrofit = "2.9.0"
     val retrofitCoroutines = "0.9.2"
     val retrofitGson = "2.4.0"
     val gson = "2.8.5"

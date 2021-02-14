@@ -26,7 +26,6 @@ fun createRemoteModule(baseUrl: String) = module {
         Retrofit.Builder()
                 .client(get())
                 .baseUrl(baseUrl)
-                .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }

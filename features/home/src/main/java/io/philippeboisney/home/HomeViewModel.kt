@@ -14,8 +14,10 @@ import kotlinx.coroutines.withContext
  * A simple [BaseViewModel] that provide the data and handle logic to communicate with the model
  * for [HomeFragment].
  */
-class HomeViewModel(private val getStocksUseCase: GetStocksUseCase,
-                    private val dispatchers: AppDispatchers) : BaseViewModel() {
+class HomeViewModel(
+    private val getStocksUseCase: GetStocksUseCase,
+    private val dispatchers: AppDispatchers
+) : BaseViewModel() {
 
 
     private val _stocks = MediatorLiveData<Resource<List<StocksUI>>>()
@@ -23,17 +25,14 @@ class HomeViewModel(private val getStocksUseCase: GetStocksUseCase,
     private var stocksSource: LiveData<Resource<List<StocksUI>>> = MutableLiveData()
 
     init {
-        getStocks()
+//        getStocks()
     }
 
-    // PUBLIC ACTIONS ---
     fun userClicksOnItem(stocks: String)
             = navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(stocks))
 
     fun userRefreshesItems()
         = getStocks()
-
-    // ---
 
     private fun getStocks() = viewModelScope.launch(dispatchers.main) {
         _stocks.removeSource(stocksSource) // We make sure there is only one source of livedata (allowing us properly refresh)
@@ -42,5 +41,9 @@ class HomeViewModel(private val getStocksUseCase: GetStocksUseCase,
             _stocks.value = it
             if (it.status == Resource.Status.ERROR) _snackbarError.value = Event(R.string.an_error_happened)
         }
+    }
+
+    fun navigateToStocksRank() {
+        navigate(HomeFragmentDirections.actionHomeFragmentToStocksRankFragment())
     }
 }

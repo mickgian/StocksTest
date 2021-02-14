@@ -9,6 +9,10 @@ android {
     dataBinding {
         enabled true
     }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
 }
 
 dependencies {
@@ -21,6 +25,7 @@ dependencies {
     // FEATURES modules
     implementation project(Modules.featureHome)
     implementation project(Modules.featureDetail)
+    implementation project(Modules.featureStocksRank)
     // NAVIGATION
     implementation project(Modules.navigation)
     // KOIN
