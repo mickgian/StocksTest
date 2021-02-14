@@ -16,6 +16,6 @@ class HomeItemDiffCallback(private val oldList: List<StocksUI>,
             = oldList[oldItemPosition] == newList[newItemPosition]
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldList[oldItemPosition].fullExchangeName == newList[newItemPosition].fullExchangeName
+        return oldList[oldItemPosition].shortName == newList[newItemPosition].shortName
     }
 }

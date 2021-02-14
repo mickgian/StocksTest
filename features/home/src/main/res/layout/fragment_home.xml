@@ -62,71 +62,34 @@
 <!--                        android:visibility="gone"-->
 <!--                        android:tint="#414141"/>-->
                 <LinearLayout
-                    android:id="@+id/tableHeader"
+                    android:id="@+id/searchLineahLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal"
-                    android:weightSum="3"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <LinearLayout
-                        android:id="@+id/tableHeaderSymbol"
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/market_search"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textSymbol"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/symbol"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/tableHeaderName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="center"
-                            android:text="@string/name" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/tableHeaderValue"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/textValue"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="center"
-                            android:text="@string/close" />
-                    </LinearLayout>
-
+                        android:background="@color/cardview_shadow_start_color"
+                        android:textCursorDrawable="@null"
+                        app:iconifiedByDefault="false"
+                        app:queryBackground="@null"
+                        tools:layout_editor_absoluteY="8dp" />
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/fragment_home_rv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="70dp"
                     app:items="@{viewmodel.stocks}"
+                    app:layout_constraintTop_toBottomOf="@id/searchLineahLayout"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@id/tableHeader" />
+                    tools:layout_editor_absoluteY="90dp" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

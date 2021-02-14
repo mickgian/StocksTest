@@ -27,9 +27,10 @@ class GetStocksUseCase(private val repository: StocksRepository) {
                 resource.data.let { stocks ->
                     stocks?.marketSummaryAndSparkResponse?.result?.forEach {
                         getStocksList.add(StocksUI(
-                                fullExchangeName = it.fullExchangeName,
+                                shortName = it.shortName,
                                 symbol = it.symbol,
-                                end = it.regularMarketPreviousClose?.fmt
+                                end = it.regularMarketPreviousClose?.fmt,
+                                previousClose = it.spark?.previousClose
                         ))
                     }
                 }

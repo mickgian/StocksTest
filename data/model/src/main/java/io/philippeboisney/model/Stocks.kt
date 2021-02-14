@@ -124,11 +124,14 @@ data class Stocks(
 }
 
 data class StocksUI(
-    @SerializedName("fullExchangeName")
-    val fullExchangeName: String,
+    @SerializedName("shortName")
+    val shortName: String?,
 
     @SerializedName("symbol")
     val symbol: String?,
+
+    @SerializedName("previousClose")
+    val previousClose: Double?,
 
     @SerializedName("end")
     val end: String?
