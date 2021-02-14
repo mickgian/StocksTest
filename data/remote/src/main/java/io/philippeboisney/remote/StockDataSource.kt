@@ -1,8 +1,18 @@
 package io.philippeboisney.remote
 
 class StockDataSource(private val stocksService: StocksService) {
-    fun fetchStocksAsync() = stocksService.fetchStocksAsync()
+    suspend fun fetchStocksAsync() = stocksService.fetchStocksAsync()
 
-    fun fetchStocksDetailsAsync(symbols: String) =
+    suspend fun fetchStocksDetailsAsync(symbols: String) =
             stocksService.fetchStocksDetailsAsync(symbols)
+
+    suspend fun fetchStockFinancialAsync(
+        url: String,
+        symbol: String,
+        region: String?
+    ) = stocksService.fetchStockFinancialAsync(
+        url,
+        symbol,
+        region
+    )
 }

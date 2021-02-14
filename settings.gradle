@@ -1,3 +1,10 @@
-include ':app', ':common', ':data:remote', ':data:model', ':data:repository',  ':features:home', ':features:detail', ':common_test', ':navigation'
-
-// ':data:local',
+include ':app',
+        ':common',
+        ':data:remote',
+        ':data:model',
+        ':data:repository',
+        ':features:home',
+        ':features:detail',
+        ':features:stocks-rank',
+        ':common_test',
+        ':navigation'
